@@ -1,0 +1,22 @@
+{
+  "name": "blackbox",
+  "version": "0.0.0",
+  "description": "Browser-based algo trading strategy / testing app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/marcoau/blackbox.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcoau/blackbox/issues"
+  },
+  "homepage": "https://github.com/marcoau/blackbox",
+  "dependencies": {
+    "express": "^4.10.2"
+  }
+}
