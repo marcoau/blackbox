@@ -2,7 +2,8 @@ var App = React.createClass({
   getInitialState: function() {
     return {
       loading: false,
-      symbol: undefined
+      symbol: undefined,
+      data: undefined
     };
   },
   getStockData: function(symbol) {
@@ -16,7 +17,8 @@ var App = React.createClass({
         console.log(data);
         this.setState({
           loading: false,
-          symbol: symbol
+          symbol: symbol,
+          data: data
         });
       }.bind(this),
       error: function(xhr, status, err) {
@@ -24,10 +26,16 @@ var App = React.createClass({
       }
     });
   },
+  clearData: function() {
+    this.setState({
+      symbol: undefined,
+      data: undefined
+    });
+  },
   render: function() {
     var heading;
     if(this.state.symbol) {
-      heading = <h3>Current stock: {this.state.symbol}</h3>;
+      heading = <h3>Current stock: {this.state.symbol}<button onClick={this.clearData}>Clear</button></h3>;
     } else if(this.state.loading) {
       heading = <h3>Loading...</h3>;
     } else {
@@ -37,8 +45,9 @@ var App = React.createClass({
     return (
       <div className='blackbox'>
         <h1>Welcome to BlackBox! Happy making it rain...</h1>
-        <StockQueryForm onSubmit={this.getStockData}/>
+        <StockQueryForm onSubmit={this.getStockData} />
         {heading}
+        <StockChart data={this.state.data} />
       </div>
     );
   }

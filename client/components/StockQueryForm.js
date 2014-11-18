@@ -6,10 +6,12 @@ var StockQueryForm = React.createClass({
   },
   render: function() {
     return (
-      <form className="stock-query" onSubmit={this.submitQuote}>
-        <input type='text' className='stock-query-symbol' />
-        <input type='submit' />
-      </form>
+      <div className='stock-query'>
+        <form onSubmit={this.submitQuote}>
+          <input type='text' className='stock-query-symbol' />
+          <input type='submit' />
+        </form>
+      </div>
     );
   }
 });
