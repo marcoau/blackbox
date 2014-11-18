@@ -8,5 +8,7 @@ app.use(function(req, res, next) {
   next();
 });
 
+require('./server/routes')(app);
+
 app.listen(process.env.PORT || 8888);
 console.log('BlackBox @ :8888');
