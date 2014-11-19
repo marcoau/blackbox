@@ -1,4 +1,4 @@
-var StockChart = React.createClass({
+var Chart = React.createClass({
   render: function() {
 
     var dateFormat = d3.time.format("%Y-%m-%d");
@@ -37,7 +37,7 @@ var StockChart = React.createClass({
       // var candleWidth = d.width;
       var candleFill = d.Open > d.Close ? "red" : "green";
       return (
-        <StockChartCandleBody x={candleX} y={candleY} width={candleWidth} height={candleHeight} fill={candleFill} />
+        <ChartCandleBody x={candleX} y={candleY} width={candleWidth} height={candleHeight} fill={candleFill} />
       );
     });
     var candleStems = _.map(data, function(d, i) {
@@ -48,7 +48,7 @@ var StockChart = React.createClass({
       var stemStroke = d.Open > d.Close ? "red" : "green";
       var stemStrokeWidth = candleWidth / 5;
       return (
-        <StockChartCandleStem x1={stemX1} x2={stemX2} y1={stemY1} y2={stemY2} stroke={stemStroke} strokeWidth={stemStrokeWidth} />
+        <ChartCandleStem x1={stemX1} x2={stemX2} y1={stemY1} y2={stemY2} stroke={stemStroke} strokeWidth={stemStrokeWidth} />
       );
     });
     return (
