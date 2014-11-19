@@ -3,7 +3,8 @@ var App = React.createClass({
     return {
       loading: false,
       symbol: undefined,
-      data: undefined
+      data: undefined,
+      fatStickMode: false
     };
   },
   getStockData: function(symbol) {
@@ -26,6 +27,11 @@ var App = React.createClass({
       }
     });
   },
+  toggleFatStickMode: function(useMode) {
+    this.setState({
+      fatStickMode: useMode
+    });
+  },
   clearData: function() {
     this.setState({
       symbol: undefined,
@@ -38,7 +44,7 @@ var App = React.createClass({
 
     if(this.state.symbol) {
       heading = <h3>Current stock: {this.state.symbol}<button onClick={this.clearData}>Clear</button></h3>;
-      chart = <Chart data={this.state.data} />;
+      chart = <Chart data={this.state.data} fatStickMode={this.state.fatStickMode} />;
     } else if(this.state.loading) {
       heading = <h3>Loading...</h3>;
     } else {
@@ -48,7 +54,7 @@ var App = React.createClass({
     return (
       <div className='blackbox'>
         <h1>Welcome to BlackBox! Happy making it rain...</h1>
-        <StockQueryForm onSubmit={this.getStockData} />
+        <StockQueryForm onSubmit={this.getStockData} toggleFatStickMode={this.toggleFatStickMode}/>
         {heading}
         {chart}
       </div>
